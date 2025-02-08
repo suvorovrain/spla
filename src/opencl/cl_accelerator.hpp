@@ -49,6 +49,8 @@
 #define VENDOR_CODE_NVIDIA "nvidia"
 #define VENDOR_CODE_INTEL  "intel"
 #define VENDOR_CODE_AMD    "amd"
+#define VENDOR_CODE_IMTECH "imtech"
+#define VENDOR_CODE_POCL   "pocl"
 
 namespace spla {
 
@@ -96,6 +98,8 @@ namespace spla {
         [[nodiscard]] bool               is_nvidia() const { return m_is_nvidia; }
         [[nodiscard]] bool               is_amd() const { return m_is_amd; }
         [[nodiscard]] bool               is_intel() const { return m_is_intel; }
+        [[nodiscard]] bool               is_imtech() const { return m_is_imtech; }
+        [[nodiscard]] bool               is_pocl() const { return m_is_pocl; }
 
     private:
         cl::Platform                          m_platform;
@@ -117,12 +121,14 @@ namespace spla {
         uint        m_max_wgs          = 0;
         uint        m_max_local_mem    = 0;
         uint        m_addr_align       = 128;
-        uint        m_default_wgs      = 64;
+        uint        m_default_wgs      = 32;
         uint        m_wave_size        = 32;
         uint        m_num_of_mem_banks = 32;
         bool        m_is_nvidia        = false;
         bool        m_is_amd           = false;
         bool        m_is_intel         = false;
+        bool        m_is_imtech        = false;
+        bool        m_is_pocl          = false;
 
         ankerl::svector<cl::CommandQueue, 2> m_queues;
     };

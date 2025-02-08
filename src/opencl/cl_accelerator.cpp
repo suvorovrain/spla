@@ -108,6 +108,8 @@ namespace spla {
         m_is_nvidia = false;
         m_is_amd    = false;
         m_is_intel  = false;
+        m_is_imtech = false;
+        m_is_pocl   = false;
 
         if (m_vendor_name.find("Intel") != std::string::npos ||
             m_vendor_name.find("intel") != std::string::npos ||
@@ -126,6 +128,20 @@ namespace spla {
             m_default_wgs = 64;
             m_wave_size   = 32;
             m_is_nvidia   = true;
+        }
+        if (m_vendor_name.find("Imagination Technologies") != std::string::npos ||
+            m_vendor_id == 4112) {
+            m_vendor_code = VENDOR_CODE_IMTECH;
+            m_default_wgs = 32;
+            m_wave_size   = 8;
+            m_is_imtech   = true;
+        }
+        if (m_vendor_name.find("Portable Computing Language") != std::string::npos ||
+            ) {
+            m_vendor_code = VENDOR_CODE_POCL;
+            m_default_wgs = 1;
+            m_wave_size   = 1;
+            m_is_pocl   = true;
         }
         if (m_vendor_name.find("Amd") != std::string::npos ||
             m_vendor_name.find("amd") != std::string::npos ||
